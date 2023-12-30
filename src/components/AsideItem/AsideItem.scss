@@ -1,0 +1,44 @@
+@import '../../assets/variables/variables.scss';
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(#{$gap-medium} / 2);
+  width: 250px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background-color: transparent;
+  color: $color-light-gray;
+  padding: $gap;
+  font-size: $font-size-text;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.14px;
+  cursor: pointer;
+  transition: background-color .3s linear, color .3s linear;
+
+  &:hover,
+  &.active {
+    background-color: $color-violet;
+    color: $color-white;
+
+    & svg path {
+      stroke: $color-white;
+      //fill: $color-white;;
+    }
+  }
+
+  & svg path {
+    transition: stroke .3s linear;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: calc(#{$gap-medium} / 2);
+  }
+
+}

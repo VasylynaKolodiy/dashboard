@@ -1,0 +1,138 @@
+@import '../../assets/variables/variables.scss';
+
+.main {
+  width: 100%;
+  background-color: $color-background;
+  padding: $gap-extra-large calc(#{$gap-extra-large} * 2) calc(#{$gap-large} * 2) calc(#{$gap-large} * 2);
+  height: 100vh;
+  overflow-y: auto;
+
+  &__title {
+    margin-bottom: $gap-extra-large;
+    color: $color-black;
+    font-size: $font-size-heading;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .customers {
+    background-color: $color-white;
+    filter: drop-shadow(0px 10px 60px rgba(226, 236, 249, 0.50));
+    padding: $gap-extra-large;
+    border-radius: $gap;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: $gap-large;
+    }
+
+    &__title {
+      color: $color-black;
+      font-size: $font-size-title;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: -0.22px;
+    }
+
+    &__label {
+      color: $color-green;
+      font-size: $font-size-text;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.14px;
+    }
+
+
+    &__search-input {
+      padding: $gap-mini $gap-mini $gap-mini $gap-large;
+      position: relative;
+      height: $gap-large;
+      width: 216px;
+      grid-area: search;
+      border: none;
+      background-color: $color-background;
+      border-radius: $font-size-small;
+      background-image: url('../../assets/images/main-search.svg');
+      background-repeat: no-repeat;
+      background-size: $font-size-heading $font-size-heading;
+      background-position: $gap-mini center;
+      color: $color-light-black;
+      font-family: $font-poppins;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.12px;
+
+      &::placeholder {
+        font-size: $font-size-mini;
+        color: $color-gray;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .button {
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid $color-red;
+    background-color: $color-light-red;
+    color: $color-red;
+    font-family: $font-poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+    width: 84px;
+    transition: box-shadow .3s linear;
+
+    &.active {
+      border: 1px solid $color-light-green;
+      background-color: rgba(22, 192, 152, 0.38);
+      color: $color-light-green;
+    }
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    }
+  }
+
+
+  .MuiDataGrid-root {
+    border: none;
+  }
+
+  .MuiDataGrid-columnHeaderTitle {
+    color: $color-gray;
+    font-family: $font-poppins;
+    font-size: $font-size-text;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+  }
+
+  .MuiDataGrid-cellContent {
+    color: $color-light-black;
+    font-family: $font-poppins;
+    font-size: $font-size-text;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.14px;
+  }
+
+  .MuiDataGrid-selectedRowCount {
+    visibility: hidden;
+  }
+}

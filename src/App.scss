@@ -1,0 +1,61 @@
+@import 'assets/variables/variables.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: $font-poppins;
+  font-size: $font-size-text;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: $color-black;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+}
+
+

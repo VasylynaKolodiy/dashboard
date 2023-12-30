@@ -1,0 +1,84 @@
+@import '../../assets/variables/variables.scss';
+
+.aside {
+  width: 306px;
+  height: 100vh;
+  padding: $gap-large $gap-medium calc(#{$gap-large} * 2) $gap-medium;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $gap;
+
+  .logo {
+    margin-bottom: $gap-large;
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: $gap-mini;
+    }
+
+    &__image {
+      width: $gap-large;
+      height: $gap-large;
+    }
+
+    &__brand {
+      font-size: $font-size-logo;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0.26px;
+    }
+
+    &__version {
+      color: $color-gray-version;
+      font-size: $font-size-small;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.1px;
+    }
+  }
+
+  .list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: $gap;
+  }
+
+  .user{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $gap;
+
+    &__photo{
+      width: $gap-extra-large;
+      height: $gap-extra-large;
+    }
+
+    &__name {
+      color: $color-black;
+      font-size: $font-size-text;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.14px;
+
+    }
+      &__position{
+        color: $color-dark-gray;
+        font-size: calc(#{$font-size-heading} / 2);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.12px;
+      }
+  }
+
+}
