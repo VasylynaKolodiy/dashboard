@@ -9,30 +9,7 @@ const Main = () => {
     const [searchValue, setSearchValue] = useState("");
     const [currentPage, setCurrentPage] = React.useState(1);
     const PAGE_SIZE = 8;
-
-    const handleSearchChange = (event) => {
-        setSearchValue(event.target.value);
-    };
-
-    const renderStatusButton = (status) => {
-        return status ? <button className='button active'>Active</button> :
-            <button className='button'>Inactive</button>;
-    };
-
     const [filteredCustomers, setFilteredCustomers] = useState([...customers]);
-
-    useEffect(() => {
-        const filtered = customers.filter((customer) =>
-            customer.customerName.toLowerCase().includes(searchValue.toLowerCase())
-        );
-        setFilteredCustomers(filtered);
-    }, [searchValue]);
-
-    useEffect(() => {
-        setResult(filteredCustomers.slice(0, PAGE_SIZE));
-        setCurrentPage(1)
-    }, [filteredCustomers]);
-
     const [result, setResult] = useState([...filteredCustomers.slice(0, PAGE_SIZE)]);
 
     const columns = [
@@ -48,12 +25,33 @@ const Main = () => {
         },
     ];
 
+    const handleSearchChange = (event) => {
+        setSearchValue(event.target.value);
+    };
+
+    const renderStatusButton = (status) => {
+        return status ? <button className='button active'>Active</button> :
+            <button className='button'>Inactive</button>;
+    };
+
     const handlePageChange = (event, newPage) => {
         setCurrentPage(newPage);
         const startIndex = (newPage - 1) * PAGE_SIZE;
         const endIndex = startIndex + PAGE_SIZE;
         setResult(filteredCustomers.slice(startIndex, endIndex))
     };
+
+    useEffect(() => {
+        const filtered = customers.filter((customer) =>
+            customer.customerName.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredCustomers(filtered);
+    }, [searchValue]);
+
+    useEffect(() => {
+        setResult(filteredCustomers.slice(0, PAGE_SIZE));
+        setCurrentPage(1)
+    }, [filteredCustomers]);
 
     return (
         <main className="main">
