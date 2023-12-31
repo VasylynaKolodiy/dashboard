@@ -4,11 +4,71 @@
   width: 306px;
   height: 100vh;
   padding: $gap-large $gap-medium calc(#{$gap-large} * 2) $gap-medium;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: $gap;
+
+  @media (max-width: $desktop) {
+    width: 200px;
+    padding: $gap-large $gap;
+  }
+
+  @media (max-width: $phablet) {
+    width: 50px;
+    padding: $gap-large 4px;
+  }
+
+  &__overlay {
+    opacity: 0;
+    transition: all .3s linear;
+  }
+
+  &__inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    transition: all .3s linear;
+
+    &.open {
+      opacity: 1;
+      z-index: 4;
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: $color-white;
+      padding: $gap-extra-large;
+      border-right: 1px solid $color-dark-gray;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+      & + .aside__overlay {
+        opacity: 1;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    @media (max-width: $phablet) {
+      position: absolute;
+      left: -200px;
+      opacity: 0;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @media (max-width: $phablet) {
+      display: block;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+  }
 
   .logo {
     margin-bottom: $gap-large;
@@ -18,11 +78,20 @@
       align-items: center;
       justify-content: flex-start;
       gap: $gap-mini;
+
+      @media (max-width: $desktop) {
+        gap: 0;
+      }
     }
 
     &__image {
       width: $gap-large;
       height: $gap-large;
+
+      @media (max-width: $desktop) {
+        width: $gap-medium;
+        height: $gap-medium;
+      }
     }
 
     &__brand {
@@ -31,6 +100,10 @@
       font-weight: 600;
       line-height: normal;
       letter-spacing: 0.26px;
+
+      @media (max-width: $desktop) {
+        font-size: $font-size-title;
+      }
     }
 
     &__version {
@@ -43,7 +116,7 @@
     }
   }
 
-  .list{
+  .list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -51,13 +124,13 @@
     gap: $gap;
   }
 
-  .user{
+  .user {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: $gap;
 
-    &__photo{
+    &__photo {
       width: $gap-extra-large;
       height: $gap-extra-large;
     }
@@ -71,14 +144,15 @@
       letter-spacing: 0.14px;
 
     }
-      &__position{
-        color: $color-dark-gray;
-        font-size: calc(#{$font-size-heading} / 2);
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.12px;
-      }
+
+    &__position {
+      color: $color-dark-gray;
+      font-size: calc(#{$font-size-heading} / 2);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.12px;
+    }
   }
 
 }

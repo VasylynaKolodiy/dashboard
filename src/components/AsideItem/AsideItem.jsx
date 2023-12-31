@@ -2,9 +2,9 @@ import React from 'react';
 import "./AsideItem.scss"
 import {ReactComponent as IconArrow} from "../../assets/images/aside-arrow.svg";
 
-const AsideItem = ({Icon, text, isArrow, isActive = false}) => {
+const AsideItem = ({Icon, text, isArrow, isActive = false, handleCloseMenu}) => {
     return (
-        <div className={`item ${isActive ? 'active' : ''}`}>
+        <div className={`item ${isActive ? 'active' : ''}`} onClick={handleCloseMenu}>
             <div className="item__main">
                 <div className="item__icon">
                     {Icon}

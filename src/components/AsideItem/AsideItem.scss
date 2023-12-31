@@ -19,6 +19,10 @@
   cursor: pointer;
   transition: background-color .3s linear, color .3s linear;
 
+  @media (max-width: $desktop) {
+    width: 180px;
+  }
+
   &:hover,
   &.active {
     background-color: $color-violet;
@@ -26,7 +30,6 @@
 
     & svg path {
       stroke: $color-white;
-      //fill: $color-white;;
     }
   }
 

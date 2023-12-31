@@ -13,11 +13,11 @@ const Main = () => {
     const [result, setResult] = useState([...filteredCustomers.slice(0, PAGE_SIZE)]);
 
     const columns = [
-        {field: 'customerName', headerName: 'Customer Name', flex: 1.2},
-        {field: 'company', headerName: 'Company', flex: 1},
-        {field: 'phoneNumber', headerName: 'Phone Number', flex: 1.1},
-        {field: 'email', headerName: 'Email', flex: 1.5},
-        {field: 'country', headerName: 'Country', flex: 1},
+        {field: 'customerName', headerName: 'Customer Name', flex: 1.2, minWidth: 150 },
+        {field: 'company', headerName: 'Company', flex: 1, minWidth: 150 },
+        {field: 'phoneNumber', headerName: 'Phone Number', flex: 1.1, minWidth: 150 },
+        {field: 'email', headerName: 'Email', flex: 1.5, minWidth: 150 },
+        {field: 'country', headerName: 'Country', flex: 1, minWidth: 150 },
         {
             field: 'status',
             headerName: 'Status',
@@ -95,7 +95,6 @@ const Main = () => {
                                 }}
                             />
 
-
                             <Stack>
                                 <div className="pagination__info">
                                     {`Showing data ${(currentPage - 1) * PAGE_SIZE + 1} to ${Math.min(currentPage * PAGE_SIZE, filteredCustomers.length)} of ${filteredCustomers.length} entries`}
@@ -114,7 +113,6 @@ const Main = () => {
                         </>
                         : <div>No data found</div>
                     }
-
                 </div>
             </div>
         </main>
