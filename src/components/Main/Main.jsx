@@ -26,9 +26,9 @@ const Main = () => {
     const [result, setResult] = useState([...filteredCustomers]);
 
     const columns = [
-        {field: 'customerName', headerName: 'Customer Name', flex: 1.5},
+        {field: 'customerName', headerName: 'Customer Name', flex: 1.2},
         {field: 'company', headerName: 'Company', flex: 1},
-        {field: 'phoneNumber', headerName: 'Phone Number', flex: 1},
+        {field: 'phoneNumber', headerName: 'Phone Number', flex: 1.1},
         {field: 'email', headerName: 'Email', flex: 1.5},
         {field: 'country', headerName: 'Country', flex: 1},
         {
