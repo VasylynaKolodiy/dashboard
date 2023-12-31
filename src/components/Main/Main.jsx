@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Main.scss"
 import customers, {user} from "../../assets/data";
 import {DataGrid} from '@mui/x-data-grid';
@@ -19,11 +19,21 @@ const Main = () => {
             <button className='button'>Inactive</button>;
     };
 
-    const filteredCustomers = customers.filter((customer) =>
-        customer.customerName.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    const [filteredCustomers, setFilteredCustomers] = useState([...customers]);
 
-    const [result, setResult] = useState([...filteredCustomers]);
+    useEffect(() => {
+        const filtered = customers.filter((customer) =>
+            customer.customerName.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredCustomers(filtered);
+    }, [searchValue]);
+
+    useEffect(() => {
+        setResult(filteredCustomers.slice(0, PAGE_SIZE));
+        setCurrentPage(1)
+    }, [filteredCustomers]);
+
+    const [result, setResult] = useState([...filteredCustomers.slice(0, PAGE_SIZE)]);
 
     const columns = [
         {field: 'customerName', headerName: 'Customer Name', flex: 1.2},
@@ -75,7 +85,7 @@ const Main = () => {
 
                 <div className="customers__table" style={{height: 'auto', width: '100%'}}>
 
-                    {result.length > 0
+                    {filteredCustomers.length > 0
                         ? <>
                             <DataGrid
                                 rows={result}
@@ -87,17 +97,22 @@ const Main = () => {
                                 }}
                             />
 
-                            <Stack >
-                                <div className="pagination__info">{`Showing data ${(currentPage - 1) * PAGE_SIZE + 1} to ${Math.min(currentPage * PAGE_SIZE, filteredCustomers.length)} of ${filteredCustomers.length} entries`}</div>
-                                <div className="pagination__pages">
-                                    <Pagination
-                                        count={Math.ceil(filteredCustomers.length / PAGE_SIZE)}
-                                        page={currentPage}
-                                        onChange={handlePageChange}
-                                    />
-                                </div>
 
+                            <Stack>
+                                <div className="pagination__info">
+                                    {`Showing data ${(currentPage - 1) * PAGE_SIZE + 1} to ${Math.min(currentPage * PAGE_SIZE, filteredCustomers.length)} of ${filteredCustomers.length} entries`}
+                                </div>
+                                {filteredCustomers.length > PAGE_SIZE && (
+                                    <div className="pagination__pages">
+                                        <Pagination
+                                            count={Math.ceil(filteredCustomers.length / PAGE_SIZE)}
+                                            page={currentPage}
+                                            onChange={handlePageChange}
+                                        />
+                                    </div>
+                                )}
                             </Stack>
+
                         </>
                         : <div>No data found</div>
                     }

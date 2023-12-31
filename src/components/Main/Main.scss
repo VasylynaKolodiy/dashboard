@@ -4,7 +4,7 @@
   width: 100%;
   background-color: $color-background;
   padding: $gap-extra-large calc(#{$gap-extra-large} * 2) calc(#{$gap-large} * 2) calc(#{$gap-large} * 2);
-  min-height: 100vh;
+  //height: 100vh;
   overflow-y: auto;
 
   &__title {
@@ -36,6 +36,13 @@
       font-weight: 600;
       line-height: normal;
       letter-spacing: -0.22px;
+    }
+
+    &__table{
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     &__label {
